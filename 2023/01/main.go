@@ -49,8 +49,7 @@ func main() {
 
 func findNumbers(line string, convert bool) int {
 	if convert {
-		// do it twice to replace new text numbers after first replacement, gūd enuf
-		line = numberReplacer.Replace(numberReplacer.Replace(line))
+		line = replace(line)
 	}
 
 	first := string(line[strings.IndexFunc(line, unicode.IsDigit)])
@@ -62,4 +61,13 @@ func findNumbers(line string, convert bool) int {
 	}
 
 	return number
+}
+
+func replace(s string) string {
+	replaced := numberReplacer.Replace(s)
+	if s != replaced {
+		return replace(replaced)
+	}
+
+	return s
 }
