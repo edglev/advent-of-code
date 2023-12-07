@@ -24,7 +24,7 @@ func main() {
 		line := scanner.Text()
 		separated := strings.Split(line, ":")
 
-		game, _ := strconv.Atoi(strings.Split(separated[0], " ")[1])
+		game, _ := strconv.Atoi(strings.Fields(separated[0])[1])
 		sets := strings.Split(separated[1], ";")
 
 		valid := true
@@ -41,7 +41,7 @@ func main() {
 			green := 13
 
 			for _, cubeLine := range cubes {
-				c := strings.Split(strings.TrimSpace(cubeLine), " ")
+				c := strings.Fields(strings.TrimSpace(cubeLine))
 
 				num, _ := strconv.Atoi(c[0])
 
